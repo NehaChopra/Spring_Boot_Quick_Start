@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public UserProfile getUserDetails() throws Exception {
-		LOGGER.info("Inside getUserDetails for mid :{}");
+		LOGGER.info("Inside getUserDetails :{}");
 		
 		UserProfile userProfile = null;
 		try {
