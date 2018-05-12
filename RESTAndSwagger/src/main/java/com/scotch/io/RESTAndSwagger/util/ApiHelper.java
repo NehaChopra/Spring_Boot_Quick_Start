@@ -63,10 +63,10 @@ public class ApiHelper{
 		try {
 			String bodyParam = mapper.writeValueAsString(userProfile);
 			long startTime = System.currentTimeMillis();
-			LOGGER.info("Request goes on searchRequest-Body: {}", bodyParam);
+			LOGGER.info("Request goes on WITH Body: {} and url : {}", bodyParam, baseUrl + addUserApiEndPoint);
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
-			HttpEntity<String> httpReq = new HttpEntity<>(bodyParam,headers);
+			HttpEntity<String> httpReq = new HttpEntity<String>(bodyParam,headers);
 
 			
 			resp= restTemplate.exchange(baseUrl + addUserApiEndPoint, HttpMethod.POST, httpReq, UserProfile.class);
@@ -88,10 +88,10 @@ public class ApiHelper{
 			LOGGER.info("Request goes on searchRequest-Body: {}", bodyParam);
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
-			HttpEntity<String> httpReq = new HttpEntity<>(bodyParam,headers);
+			HttpEntity<String> httpReq = new HttpEntity<String>(bodyParam,headers);
 
 			
-			resp= restTemplate.exchange(baseUrl + updateUserApiEndPoint, HttpMethod.PATCH, httpReq, UserProfile.class);
+			resp= restTemplate.exchange(baseUrl + updateUserApiEndPoint, HttpMethod.PUT, httpReq, UserProfile.class);
 			long endTime = System.currentTimeMillis();
 			
 			LOGGER.info("User details API response Time: {}", (endTime - startTime));
@@ -110,7 +110,7 @@ public class ApiHelper{
 			LOGGER.info("Request goes on searchRequest-Body: {}", bodyParam);
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
-			HttpEntity<String> httpReq = new HttpEntity<>(bodyParam,headers);
+			HttpEntity<String> httpReq = new HttpEntity<String>(bodyParam,headers);
 
 			
 			resp= restTemplate.exchange(baseUrl + deleteUserApiEndPoint, HttpMethod.DELETE, httpReq, UserProfile.class);
