@@ -1,0 +1,28 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+   http://www.liquibase.org/xml/ns/dbchangelog 
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+	<changeSet id="create_book_table" author="nchopra">
+		<preConditions onFail="MARK_RAN"
+			onFailMessage="book Table is already present">
+			<sqlCheck expectedResult="0">
+				SELECT COUNT(*)
+				FROM
+				INFORMATION_SCHEMA.TABLES
+				WHERE TABLE_NAME ='books';
+			</sqlCheck>
+		</preConditions>
+		<sql>
+			CREATE TABLE `books` (
+				`bookId` INT(5) NOT NULL AUTO_INCREMENT,
+				`bookTitle` VARCHAR(200) NOT NULL,
+				`bookCategory` VARCHAR(100) NOT NULL,
+				PRIMARY KEY (`bookId`)
+			)
+			COLLATE='latin1_swedish_ci'
+			ENGINE=InnoDB ;
+		</sql>
+	</changeSet>
+</databaseChangeLog>
