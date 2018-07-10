@@ -3,6 +3,7 @@ package com.scotch.io.CRUDJDBC.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.scotch.io.CRUDJDBC.dao.BookDao;
 import com.scotch.io.CRUDJDBC.dto.Book;
@@ -13,6 +14,7 @@ import com.scotch.io.CRUDJDBC.service.BookService;
  * @author nchopra
  *
  */
+@Service
 public class BookServiceImpl implements BookService {
 
 	@Autowired
@@ -34,8 +36,8 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Boolean updateBook(Book book) {
-		return bookDao.updateBook(book);
+	public Boolean updateBook(Book book, int bookId) {
+		return bookDao.updateBook(book, bookId);
 	}
 
 	@Override

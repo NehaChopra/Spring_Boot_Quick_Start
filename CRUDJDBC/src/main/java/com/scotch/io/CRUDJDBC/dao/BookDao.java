@@ -11,11 +11,10 @@ import com.scotch.io.CRUDJDBC.dto.Book;
  * @author nchopra
  *
  */
-@Repository
 public interface BookDao {
 	List<Book> getAllBooks();
 	Book getBookById(int bookId);
 	Boolean addBook(Book book);
-	Boolean updateBook(Book book);
+	Boolean updateBook(Book book, int bookId);
 	Boolean deleteBook(int bookId);
 }

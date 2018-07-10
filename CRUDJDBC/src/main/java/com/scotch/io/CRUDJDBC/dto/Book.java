@@ -7,7 +7,7 @@ package com.scotch.io.CRUDJDBC.dto;
 public class Book {
 	private String bookId;
 	private String bookTitle;
-	private Double bookCategory;
+	private String bookCategory;
 	
 	public String getBookId() {
 		return bookId;
@@ -21,13 +21,12 @@ public class Book {
 	public void setBookTitle(String bookTitle) {
 		this.bookTitle = bookTitle;
 	}
-	public Double getBookCategory() {
+	public String getBookCategory() {
 		return bookCategory;
 	}
-	public void setBookCategory(Double bookCategory) {
+	public void setBookCategory(String bookCategory) {
 		this.bookCategory = bookCategory;
 	}
-
 	@Override
 	public String toString() {
 		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", bookCategory=" + bookCategory+ "]";

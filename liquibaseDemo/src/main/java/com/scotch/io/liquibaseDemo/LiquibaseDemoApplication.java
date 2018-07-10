@@ -24,13 +24,6 @@ public class LiquibaseDemoApplication {
 		SpringApplication.run(LiquibaseDemoApplication.class, args);
 	}
 	
-	
-//	@Bean
-//	@ConfigurationProperties(prefix = "spring.datasource")
-//	public DataSource dataSource() {
-//		return DataSourceBuilder.create().build();
-//	}
-	
 	@ConditionalOnProperty(prefix = "spring.liquibase", name = {"enabled"})
 	@Bean
 	public SpringLiquibase liquibase(LiquibaseProperties liquibaseProperties, DataSource dataSource) {

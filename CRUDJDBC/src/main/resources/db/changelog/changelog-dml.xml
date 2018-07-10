@@ -1,0 +1,26 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+   http://www.liquibase.org/xml/ns/dbchangelog 
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+	<changeSet id="book_insertion" author="nchopra">
+		<preConditions onFail="MARK_RAN"
+			onFailMessage="Headers for settlement are already inserted">
+			<sqlCheck expectedResult="0">
+				SELECT COUNT(*) FROM books
+			</sqlCheck>
+		</preConditions>
+		<sql>
+			INSERT INTO books
+			(bookId,bookTitle,bookCategory) VALUES
+			('1','bookTitle1','bookCategory1'),
+			('2','bookTitle2','bookCategory1'),
+			('3','bookTitle3','bookCategory1'),
+			('4','bookTitle4','bookCategory1'),
+			('5','bookTitle5','bookCategory1'),
+			('6','bookTitle6','bookCategory1'),
+			('7','bookTitle7','bookCategory1')
+		</sql>
+	</changeSet>
+</databaseChangeLog>

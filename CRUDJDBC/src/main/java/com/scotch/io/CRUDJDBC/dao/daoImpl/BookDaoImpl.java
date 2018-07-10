@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.scotch.io.CRUDJDBC.dao.BookDao;
 import com.scotch.io.CRUDJDBC.dto.Book;
@@ -15,6 +16,7 @@ import com.scotch.io.CRUDJDBC.util.SQLQueries;
  * @author nchopra
  *
  */
+@Repository
 public class BookDaoImpl implements BookDao, SQLQueries {
 
 	@Autowired
@@ -27,7 +29,7 @@ public class BookDaoImpl implements BookDao, SQLQueries {
 
 	@Override
 	public Book getBookById(int bookId) {
-		return jdbcTemplate.queryForObject(SQLQueries.FETCH_BOOKS_BY_ID, new BeanPropertyRowMapper<Book>(Book.class));
+		return jdbcTemplate.queryForObject(SQLQueries.FETCH_BOOKS_BY_ID, new BeanPropertyRowMapper<Book>(Book.class), bookId);
 	}
 
 	@Override
@@ -37,8 +39,8 @@ public class BookDaoImpl implements BookDao, SQLQueries {
 	}
 
 	@Override
-	public Boolean updateBook(Book book) {
-		jdbcTemplate.update(SQLQueries.UPDATE_BOOKS, book.getBookId(), book.getBookTitle(), book.getBookCategory());
+	public Boolean updateBook(Book book, int bookId) {
+		jdbcTemplate.update(SQLQueries.UPDATE_BOOKS, bookId, book.getBookTitle(), book.getBookCategory());
 		return true;
 	}
 
