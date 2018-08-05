@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.scotch.io.ehcache.dto.TodoTask;
-import com.scotch.io.ehcache.service.impl.TodoTaskServiceImpl;
+import com.scotch.io.ehcache.service.TodoTaskService;
 
 /**
  * 
@@ -22,7 +22,7 @@ public class TodoTaskController {
 	private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 		
    @Autowired
-   private TodoTaskServiceImpl todoTaskService;
+   private TodoTaskService todoTaskService;
    
 	@GetMapping("/api/todoTasks")
 	public List<TodoTask> findAll() {
